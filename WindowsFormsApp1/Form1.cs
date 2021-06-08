@@ -13,8 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        public delegate double OperationMethod(double a, double b);
-        public static OperationMethod currentOperationMethod;
+        internal delegate double OperationMethod(double a, double b);
+        internal static OperationMethod currentOperationMethod;
         public Form1()
         {
             InitializeComponent();
@@ -28,54 +28,26 @@ namespace WindowsFormsApp1
         }
 
 
-        private void textBox1_MouseCaptureChanged(object sender, EventArgs e)
+
+        private void Button1_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
+            Label1.Text = Convert.ToString(OperationButton.ExecuteOperation(this, currentOperationMethod));
 
         }
-
-        private void textBox2_MouseCaptureChanged(object sender, EventArgs e)
-        {
-            textBox2.Clear();
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        protected bool ValidateInput()
         {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label1.Text = Convert.ToString(OperationButton.ExecuteOperation(this, currentOperationMethod));
-
-        }
-
-
-
-        public bool ValidateInput()
-        {
-            
-            if (Regex.IsMatch(textBox1.Text, @"^\-*\d*\,*\d+$") && Regex.IsMatch(textBox2.Text, @"^\-*\d*\,*\d+$"))
-            return true;
+            if (Regex.IsMatch(TextBox1.Text, @"^\-*\d*\,*\d+$") && Regex.IsMatch(TextBox2.Text, @"^\-*\d*\,*\d+$"))
+                return true;
             return false;
         }
 
-
-         void AddOperation(string OperationName, OperationMethod operationMethod)
+        private void AddOperation(string OperationName, OperationMethod operationMethod)
         {
             new OperationButton(this, OperationName, operationMethod);
         }
 
       
-
         public static double Add(double a, double b)
         {
             return a + b;
@@ -107,10 +79,9 @@ namespace WindowsFormsApp1
         }
         void InitializeUserOperations()
         {
-           // AddOperation("sample00000", Sample);
+          //  AddOperation("sample00000", Sample);
 
         }
-
 
     }
 }

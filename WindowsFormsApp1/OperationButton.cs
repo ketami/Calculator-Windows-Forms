@@ -18,23 +18,25 @@ namespace WindowsFormsApp1
             string operationName;
             static byte number = 1;
 
-            public OperationButton(Form1 Form1, string operationName, OperationMethod operationMethod)
+            static Dictionary<string, OperationMethod> mappers = new Dictionary<string, OperationMethod>();
+
+            internal OperationButton(Form1 Form1, string operationName, OperationMethod operationMethod)
             {
                 this.operationName = operationName;
-                mappers.Add(operationName, operationMethod);
+                if (mappers.TryGetValue(operationName, out operationMethod) == true) mappers.Add(operationName, operationMethod);
                 Button newButton = new Button();
                 ButtonSetter(Form1, operationName, newButton);
                 newButton.Click += new EventHandler(Click);
-                Form1.panel1.Controls.Add(newButton);
+                Form1.Panel1.Controls.Add(newButton);
                 number++;
             }
 
-            void ButtonSetter(Form1 Form1, string operationName, Button newButton)
+            private void ButtonSetter(Form1 Form1, string operationName, Button newButton)
             {
-                int x = Form1.panel1.Width * ((number - 1) % 2) / 2 + Form1.panel1.Width / 16;
-                int y = Form1.panel1.Height * ((number - 1) / 2) / 6 + Form1.panel1.Height / 25;
-                int weigth = Convert.ToInt32(Math.Round(Form1.panel1.Width * ((double)1 / 2 - (double)1 / 8)));
-                int heigth = Convert.ToInt32(Math.Round(Form1.panel1.Height * ((double)1 / 6 - (double)2 / 25)));
+                int x = Form1.Panel1.Width * ((number - 1) % 2) / 2 + Form1.Panel1.Width / 16;
+                int y = Form1.Panel1.Height * ((number - 1) / 2) / 6 + Form1.Panel1.Height / 25;
+                int weigth = Convert.ToInt32(Math.Round(Form1.Panel1.Width * ((double)1 / 2 - (double)1 / 8)));
+                int heigth = Convert.ToInt32(Math.Round(Form1.Panel1.Height * ((double)1 / 6 - (double)2 / 25)));
                 newButton.Name = operationName;
                 newButton.Text = operationName;
                 newButton.Location = new Point(x, y);
@@ -43,8 +45,6 @@ namespace WindowsFormsApp1
             }
             
 
-            static Dictionary<string, OperationMethod> mappers = new Dictionary<string, OperationMethod>();
-
             private new void Click(object sender, EventArgs e)
             {
                 mappers.TryGetValue(operationName, out currentOperationMethod);
@@ -52,7 +52,8 @@ namespace WindowsFormsApp1
                 this.BackColor = System.Drawing.Color.MediumPurple;
             }
 
-            public static double ExecuteOperation(Form1 Form, OperationMethod Operation)
+
+            internal static double ExecuteOperation(Form1 Form, OperationMethod Operation)
             {
                 switch (Form.ValidateInput())
                 {

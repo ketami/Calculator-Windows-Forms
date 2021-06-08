@@ -31,11 +31,11 @@ namespace WindowsFormsApp1
         {
             this.TextBox1 = new System.Windows.Forms.TextBox();
             this.TextBox2 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.Panel1 = new System.Windows.Forms.Panel();
             this.ResultButton = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.GroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TextBox1
@@ -54,34 +54,34 @@ namespace WindowsFormsApp1
             this.TextBox2.TabIndex = 2;
             this.TextBox2.Text = "3,8810920371";
             // 
-            // groupBox1
+            // GroupBox1
             // 
-            this.groupBox1.Controls.Add(this.TextBox1);
-            this.groupBox1.Controls.Add(this.TextBox2);
-            this.groupBox1.Location = new System.Drawing.Point(15, 44);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(166, 141);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Введите А и B";
+            this.GroupBox1.Controls.Add(this.TextBox1);
+            this.GroupBox1.Controls.Add(this.TextBox2);
+            this.GroupBox1.Location = new System.Drawing.Point(15, 44);
+            this.GroupBox1.Name = "GroupBox1";
+            this.GroupBox1.Size = new System.Drawing.Size(166, 141);
+            this.GroupBox1.TabIndex = 3;
+            this.GroupBox1.TabStop = false;
+            this.GroupBox1.Text = "Введите А и B";
             // 
-            // label1
+            // Label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(168, 317);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Ответ:";
+            this.Label1.AutoSize = true;
+            this.Label1.Location = new System.Drawing.Point(168, 317);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(40, 13);
+            this.Label1.TabIndex = 5;
+            this.Label1.Text = "Ответ:";
             // 
-            // panel1
+            // Panel1
             // 
-            this.panel1.AutoSize = true;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(289, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(228, 318);
-            this.panel1.TabIndex = 6;
+            this.Panel1.AutoSize = true;
+            this.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel1.Location = new System.Drawing.Point(289, 12);
+            this.Panel1.Name = "Panel1";
+            this.Panel1.Size = new System.Drawing.Size(228, 318);
+            this.Panel1.TabIndex = 6;
             // 
             // ResultButton
             // 
@@ -92,7 +92,7 @@ namespace WindowsFormsApp1
             this.ResultButton.TabIndex = 7;
             this.ResultButton.Text = "Результат";
             this.ResultButton.UseVisualStyleBackColor = false;
-            this.ResultButton.Click += new System.EventHandler(this.button1_Click);
+            this.ResultButton.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Form1
             // 
@@ -101,26 +101,25 @@ namespace WindowsFormsApp1
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(529, 339);
             this.Controls.Add(this.ResultButton);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Controls.Add(this.Panel1);
+            this.Controls.Add(this.Label1);
+            this.Controls.Add(this.GroupBox1);
             this.Name = "Form1";
             this.Text = "Калькулятор";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.GroupBox1.ResumeLayout(false);
+            this.GroupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        public System.Windows.Forms.TextBox TextBox1;
-        public System.Windows.Forms.TextBox TextBox2;
-        public System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
+        internal System.Windows.Forms.TextBox TextBox1;
+        internal System.Windows.Forms.TextBox TextBox2;
+        private System.Windows.Forms.GroupBox GroupBox1;
+        private System.Windows.Forms.Label Label1;
+        private System.Windows.Forms.Panel Panel1;
         private System.Windows.Forms.Button ResultButton;
     }
 }
