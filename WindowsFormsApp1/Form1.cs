@@ -40,24 +40,11 @@ namespace WindowsFormsApp1
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             label1.Text = Convert.ToString(OperationButton.ExecuteOperation(this, currentOperationMethod));
 
         }
-
 
 
         public bool ValidateInput()
@@ -107,7 +94,7 @@ namespace WindowsFormsApp1
         }
         void InitializeUserOperations()
         {
-            AddOperation("sample00000", Sample);
+       //     AddOperation("sample00000", Sample);
 
         }
 

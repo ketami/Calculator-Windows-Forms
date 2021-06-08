@@ -63,7 +63,10 @@ namespace WindowsFormsApp1
                         MessageBox.Show("Введите число");
                         return 0;
                 }
-                return Operation(Convert.ToDouble(Form.textBox1.Text), Convert.ToDouble(Form.textBox2.Text));
+                if (Operation != null) return Operation(Convert.ToDouble(Form.textBox1.Text), Convert.ToDouble(Form.textBox2.Text));
+                else
+                    MessageBox.Show("Не выбрана операция");
+                    return 0;
             }
         }
 
