@@ -48,23 +48,23 @@ namespace WindowsFormsApp1
         }
 
       
-        public static double Add(double a, double b)
+        private static double Add(double a, double b)
         {
             return a + b;
         }
-        public static double Substract(double a, double b)
+        private static double Substract(double a, double b)
         {
             return a - b;
         }
-        public static double Multiply(double a, double b)
+        private static double Multiply(double a, double b)
         {
             return a * b;
         }
-        public static double Divide(double a, double b)
+        private static double Divide(double a, double b)
         {
             return a / b;
         }
-        public void InitializeDefaultOperations()
+        private void InitializeDefaultOperations()
         {
             AddOperation("+", Add);
             AddOperation("-", Substract);
@@ -73,13 +73,13 @@ namespace WindowsFormsApp1
             InitializeUserOperations();
 
         }
-        public static double Sample(double a, double b)
+        private static double Sample(double a, double b)
         {
             return 0;
         }
-        void InitializeUserOperations()
+        private void InitializeUserOperations()
         {
-          //  AddOperation("sample00000", Sample);
+            AddOperation("sample00000", Sample);
 
         }
 

@@ -15,8 +15,8 @@ namespace WindowsFormsApp1
     {
         public class OperationButton : Button
         {
-            string operationName;
-            static byte number = 1;
+           private string operationName;
+           private static byte number = 1;
 
             static Dictionary<string, OperationMethod> mappers = new Dictionary<string, OperationMethod>();
 
@@ -25,14 +25,14 @@ namespace WindowsFormsApp1
                 this.operationName = operationName;
                 mappers.Add(operationName, operationMethod);
                 Button newButton = new Button();
-                ButtonSetter(Form1, operationName, newButton);
+                Setter(Form1, newButton);
                 newButton.Click += new EventHandler(Click);
                 Form1.Panel1.Controls.Add(newButton);
                 number++;
             }
 
-            private void ButtonSetter(Form1 Form1, string operationName, Button newButton)
-            {
+            private void Setter(Form1 Form1, Button newButton)
+            {   
                 int x = Form1.Panel1.Width * ((number - 1) % 2) / 2 + Form1.Panel1.Width / 16;
                 int y = Form1.Panel1.Height * ((number - 1) / 2) / 6 + Form1.Panel1.Height / 25;
                 int weigth = Convert.ToInt32(Math.Round(Form1.Panel1.Width * ((double)1 / 2 - (double)1 / 8)));
