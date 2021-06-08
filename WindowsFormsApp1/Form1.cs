@@ -13,8 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        public delegate double OperationMethod(double a, double b);
-        public static OperationMethod currentOperationMethod;
+        internal delegate double OperationMethod(double a, double b);
+        internal static OperationMethod currentOperationMethod;
         public Form1()
         {
             InitializeComponent();
@@ -28,29 +28,18 @@ namespace WindowsFormsApp1
         }
 
 
-        private void textBox1_MouseCaptureChanged(object sender, EventArgs e)
+
+        private void Button1_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-
-        }
-
-        private void textBox2_MouseCaptureChanged(object sender, EventArgs e)
-        {
-            textBox2.Clear();
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label1.Text = Convert.ToString(OperationButton.ExecuteOperation(this, currentOperationMethod));
+            Label1.Text = Convert.ToString(OperationButton.ExecuteOperation(this, currentOperationMethod));
 
         }
 
 
-        public bool ValidateInput()
+        protected bool ValidateInput()
         {
             
-            if (Regex.IsMatch(textBox1.Text, @"^\-*\d*\,*\d+$") && Regex.IsMatch(textBox2.Text, @"^\-*\d*\,*\d+$"))
+            if (Regex.IsMatch(TextBox1.Text, @"^\-*\d*\,*\d+$") && Regex.IsMatch(TextBox2.Text, @"^\-*\d*\,*\d+$"))
             return true;
             return false;
         }
@@ -62,7 +51,6 @@ namespace WindowsFormsApp1
         }
 
       
-
         public static double Add(double a, double b)
         {
             return a + b;
@@ -94,10 +82,9 @@ namespace WindowsFormsApp1
         }
         void InitializeUserOperations()
         {
-            AddOperation("sample00000", Sample);
+          //  AddOperation("sample00000", Sample);
 
         }
-
 
     }
 }
