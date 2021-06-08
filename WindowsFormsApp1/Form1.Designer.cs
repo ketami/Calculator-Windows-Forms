@@ -29,8 +29,8 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TextBox1 = new System.Windows.Forms.TextBox();
+            this.TextBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -38,26 +38,26 @@ namespace WindowsFormsApp1
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // TextBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(36, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(98, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "1,3";
+            this.TextBox1.Location = new System.Drawing.Point(36, 29);
+            this.TextBox1.Name = "TextBox1";
+            this.TextBox1.Size = new System.Drawing.Size(98, 20);
+            this.TextBox1.TabIndex = 1;
+            this.TextBox1.Text = "1,3";
             // 
-            // textBox2
+            // TextBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(36, 92);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(98, 20);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "3,8810920371";
+            this.TextBox2.Location = new System.Drawing.Point(36, 92);
+            this.TextBox2.Name = "TextBox2";
+            this.TextBox2.Size = new System.Drawing.Size(98, 20);
+            this.TextBox2.TabIndex = 2;
+            this.TextBox2.Text = "3,8810920371";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.TextBox1);
+            this.groupBox1.Controls.Add(this.TextBox2);
             this.groupBox1.Location = new System.Drawing.Point(15, 44);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(166, 141);
@@ -116,8 +116,8 @@ namespace WindowsFormsApp1
         }
 
         #endregion
-        public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox TextBox1;
+        public System.Windows.Forms.TextBox TextBox2;
         public System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;

@@ -17,7 +17,6 @@ namespace WindowsFormsApp1
         {
             string operationName;
             static byte number = 1;
-            bool isPushed;
 
             public OperationButton(Form1 Form1, string operationName, OperationMethod operationMethod)
             {
@@ -63,7 +62,7 @@ namespace WindowsFormsApp1
                         MessageBox.Show("Введите число");
                         return 0;
                 }
-                if (Operation != null) return Operation(Convert.ToDouble(Form.textBox1.Text), Convert.ToDouble(Form.textBox2.Text));
+                if (Operation != null) return Operation(Convert.ToDouble(Form.TextBox1.Text), Convert.ToDouble(Form.TextBox2.Text));
                 else
                     MessageBox.Show("Не выбрана операция");
                     return 0;
