@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
             internal OperationButton(Form1 Form1, string operationName, OperationMethod operationMethod)
             {
                 this.operationName = operationName;
-                if (mappers.TryGetValue(operationName, out operationMethod) == true) mappers.Add(operationName, operationMethod);
+                mappers.Add(operationName, operationMethod);
                 Button newButton = new Button();
                 ButtonSetter(Form1, operationName, newButton);
                 newButton.Click += new EventHandler(Click);
