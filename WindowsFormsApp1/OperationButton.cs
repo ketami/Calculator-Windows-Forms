@@ -51,12 +51,8 @@ namespace WindowsFormsApp1
                 mappers.TryGetValue(operationName, out currentOperationMethod);
                 this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                 this.BackColor = System.Drawing.Color.MediumPurple;
-                Form1.panel1.Controls.Clear();
             }
-            override void ControlCollection.Clear()
-            {
 
-            }
             public static double ExecuteOperation(Form1 Form, OperationMethod Operation)
             {
                 switch (Form.ValidateInput())
