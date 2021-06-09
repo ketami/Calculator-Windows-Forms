@@ -11,32 +11,34 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class CalculatorWindow : Form
     {
+
         public class OperationButton : Button
         {
+           private static Button PushedButton;
            private string operationName;
            private static byte number = 1;
+           CalculatorWindow CalculatorWindow;
+           static Dictionary<string, OperationMethod> mappers = new Dictionary<string, OperationMethod>();
 
-            static Dictionary<string, OperationMethod> mappers = new Dictionary<string, OperationMethod>();
-
-            internal OperationButton(Form1 Form1, string operationName, OperationMethod operationMethod)
+            internal OperationButton(CalculatorWindow CalculatorWindow, string operationName, OperationMethod operationMethod)
             {
+                this.CalculatorWindow = CalculatorWindow;
                 this.operationName = operationName;
                 mappers.Add(operationName, operationMethod);
                 Button newButton = new Button();
-                Setter(Form1, newButton);
+                Setter(newButton);
                 newButton.Click += new EventHandler(Click);
-                Form1.Panel1.Controls.Add(newButton);
+                CalculatorWindow.Panel1.Controls.Add(newButton);
                 number++;
             }
-
-            private void Setter(Form1 Form1, Button newButton)
-            {   
-                int x = Form1.Panel1.Width * ((number - 1) % 2) / 2 + Form1.Panel1.Width / 16;
-                int y = Form1.Panel1.Height * ((number - 1) / 2) / 6 + Form1.Panel1.Height / 25;
-                int weigth = Convert.ToInt32(Math.Round(Form1.Panel1.Width * ((double)1 / 2 - (double)1 / 8)));
-                int heigth = Convert.ToInt32(Math.Round(Form1.Panel1.Height * ((double)1 / 6 - (double)2 / 25)));
+            private void Setter(Button newButton)
+            {
+                int x = CalculatorWindow.Panel1.Width * ((number - 1) % 2) / 2 + CalculatorWindow.Panel1.Width / 16;
+                int y = CalculatorWindow.Panel1.Height * ((number - 1) / 2) / 6 + CalculatorWindow.Panel1.Height / 25;
+                int weigth = Convert.ToInt32(Math.Round(CalculatorWindow.Panel1.Width * ((double)1 / 2 - (double)1 / 8)));
+                int heigth = Convert.ToInt32(Math.Round(CalculatorWindow.Panel1.Height * ((double)1 / 6 - (double)2 / 25)));
                 newButton.Name = operationName;
                 newButton.Text = operationName;
                 newButton.Location = new Point(x, y);
@@ -47,15 +49,22 @@ namespace WindowsFormsApp1
 
             private new void Click(object sender, EventArgs e)
             {
+                Button btn = sender as Button;
+                if (PushedButton != null)
+                {
+                    PushedButton.FlatStyle = btn.FlatStyle;
+                    PushedButton.BackColor = btn.BackColor;
+                }
+                PushedButton = btn;
                 mappers.TryGetValue(operationName, out currentOperationMethod);
-                this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                this.BackColor = System.Drawing.Color.MediumPurple;
+                btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                btn.BackColor = System.Drawing.Color.LightSteelBlue;
             }
 
 
-            internal static double ExecuteOperation(Form1 Form, OperationMethod Operation)
+            internal static double ExecuteOperation(CalculatorWindow CalculatorWindow, OperationMethod Operation)
             {
-                switch (Form.ValidateInput())
+                switch (CalculatorWindow.ValidateInput())
                 {
                     case true:
                         break;
@@ -63,7 +72,7 @@ namespace WindowsFormsApp1
                         MessageBox.Show("Введите число");
                         return 0;
                 }
-                if (Operation != null) return Operation(Convert.ToDouble(Form.TextBox1.Text), Convert.ToDouble(Form.TextBox2.Text));
+                if (Operation != null) return Operation(Convert.ToDouble(CalculatorWindow.TextBox1.Text), Convert.ToDouble(CalculatorWindow.TextBox2.Text));
                 else
                     MessageBox.Show("Не выбрана операция");
                     return 0;

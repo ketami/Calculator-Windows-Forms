@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class CalculatorWindow : Form
     {
         internal delegate double OperationMethod(double a, double b);
         internal static OperationMethod currentOperationMethod;
-        public Form1()
+        public CalculatorWindow()
         {
             InitializeComponent();
 
@@ -23,8 +23,8 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitializeDefaultOperations();
 
+            InitializeDefaultOperations();
         }
 
 
@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
                 return true;
             return false;
         }
-
+       
         private void AddOperation(string OperationName, OperationMethod operationMethod)
         {
             new OperationButton(this, OperationName, operationMethod);
@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
         }
         private void InitializeUserOperations()
         {
-            AddOperation("sample00000", Sample);
+          //  AddOperation("sample00000", Sample);
 
         }
 

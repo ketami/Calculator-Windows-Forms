@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class Form1
+    partial class CalculatorWindow
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1
             this.ResultButton.UseVisualStyleBackColor = false;
             this.ResultButton.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // Form1
+            // CalculatorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.GroupBox1);
-            this.Name = "Form1";
+            this.Name = "CalculatorWindow";
             this.Text = "Калькулятор";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.GroupBox1.ResumeLayout(false);
