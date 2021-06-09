@@ -11,51 +11,47 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class CalculatorWindow : Form
     {
+
         public class OperationButton : Button
         {
-            string operationName;
-            static byte number = 1;
-            bool isPushed;
-
-            public OperationButton(Form1 Form1, string operationName, OperationMethod operationMethod)
+           private static Button PushedButton;
+           public string OperationName;
+           public byte Index { get; }
+           public static byte Number = 1;
+                
+           static Dictionary<string, OperationMethod> OperationMap = new Dictionary<string, OperationMethod>();
+            internal OperationButton(string operationName, OperationMethod operationMethod)
             {
-                this.operationName = operationName;
-                mappers.Add(operationName, operationMethod);
-                Button newButton = new Button();
-                ButtonSetter(Form1, operationName, newButton);
-                newButton.Click += new EventHandler(Click);
-                Form1.panel1.Controls.Add(newButton);
-                number++;
+                this.Name = operationName;
+                this.Text = operationName;
+                this.Index = Number;
+                this.OperationName = operationName;
+                this.UseVisualStyleBackColor = true;
+                ((Button)this).Click += Click;
+                OperationMap.Add(operationName, operationMethod);
+                Number++;
             }
 
-            void ButtonSetter(Form1 Form1, string operationName, Button newButton)
-            {
-                int x = Form1.panel1.Width * ((number - 1) % 2) / 2 + Form1.panel1.Width / 16;
-                int y = Form1.panel1.Height * ((number - 1) / 2) / 6 + Form1.panel1.Height / 25;
-                int weigth = Convert.ToInt32(Math.Round(Form1.panel1.Width * ((double)1 / 2 - (double)1 / 8)));
-                int heigth = Convert.ToInt32(Math.Round(Form1.panel1.Height * ((double)1 / 6 - (double)2 / 25)));
-                newButton.Name = operationName;
-                newButton.Text = operationName;
-                newButton.Location = new Point(x, y);
-                newButton.Size = new Size(weigth, heigth);
-                newButton.UseVisualStyleBackColor = true;
-            }
             
-
-            static Dictionary<string, OperationMethod> mappers = new Dictionary<string, OperationMethod>();
 
             private new void Click(object sender, EventArgs e)
             {
-                mappers.TryGetValue(operationName, out currentOperationMethod);
-                this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                this.BackColor = System.Drawing.Color.MediumPurple;
+                Button btn = sender as Button;
+                if (PushedButton != null)
+                {
+                    PushedButton.BackColor = btn.BackColor;
+                }
+                PushedButton = btn;
+                btn.BackColor = System.Drawing.Color.LightSteelBlue;
+                OperationMap.TryGetValue(OperationName, out currentOperationMethod);
             }
 
-            public static double ExecuteOperation(Form1 Form, OperationMethod Operation)
+
+            internal static double ExecuteOperation(CalculatorWindow CalculatorWindow, OperationMethod Operation)
             {
-                switch (Form.ValidateInput())
+                switch (CalculatorWindow.ValidateInput())
                 {
                     case true:
                         break;
@@ -63,7 +59,7 @@ namespace WindowsFormsApp1
                         MessageBox.Show("Введите число");
                         return 0;
                 }
-                if (Operation != null) return Operation(Convert.ToDouble(Form.textBox1.Text), Convert.ToDouble(Form.textBox2.Text));
+                if (Operation != null) return Operation(Convert.ToDouble(CalculatorWindow.TextBox1.Text), Convert.ToDouble(CalculatorWindow.TextBox2.Text));
                 else
                     MessageBox.Show("Не выбрана операция");
                     return 0;

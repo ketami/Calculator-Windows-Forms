@@ -11,75 +11,83 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class CalculatorWindow : Form
     {
-        public delegate double OperationMethod(double a, double b);
-        public static OperationMethod currentOperationMethod;
-        public Form1()
+        internal delegate double OperationMethod(double a, double b);
+        internal static OperationMethod currentOperationMethod;
+        private static int PanelCounter = -1;
+        public CalculatorWindow()
         {
             InitializeComponent();
 
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void CalculatorWindow_Load(object sender, EventArgs e)
         {
             InitializeDefaultOperations();
-
+            InitializeButtons();
+            Initialize_OperationPanel();
         }
 
 
-        private void textBox1_MouseCaptureChanged(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
+            Label1.Text = Convert.ToString(OperationButton.ExecuteOperation(this, currentOperationMethod));
 
         }
-
-        private void textBox2_MouseCaptureChanged(object sender, EventArgs e)
-        {
-            textBox2.Clear();
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            label1.Text = Convert.ToString(OperationButton.ExecuteOperation(this, currentOperationMethod));
-
-        }
-
-
-        public bool ValidateInput()
+        protected bool ValidateInput()
         {
             
-            if (Regex.IsMatch(textBox1.Text, @"^\-*\d*\,*\d+$") && Regex.IsMatch(textBox2.Text, @"^\-*\d*\,*\d+$"))
-            return true;
+            if (Regex.IsMatch(TextBox1.Text, @"^\-*\d*\,*\d+$") && Regex.IsMatch(TextBox2.Text, @"^\-*\d*\,*\d+$"))
+                return true;
             return false;
         }
-
-
-         void AddOperation(string OperationName, OperationMethod operationMethod)
+       
+        private void AddOperation(string OperationName, OperationMethod operationMethod)
         {
-            new OperationButton(this, OperationName, operationMethod);
+            Panel1.Controls.Add(new OperationButton(OperationName, operationMethod));
         }
 
-      
+        private void InitializeButtons()
+        {
+            foreach (Button btn in Panel1.Controls)
+            {
+                if ((((OperationButton)btn).Index-1) % 12 == 0) PanelCounter++;
+                 OperationButton_Setter(btn, (byte)PanelCounter);
+            }
+        }
 
-        public static double Add(double a, double b)
+        private void OperationButton_Setter(Button newButton, byte PanelCounter)
+        {
+                int x =  Panel1.Width * PanelCounter + Panel1.Width * ((((OperationButton)newButton).Index - 1) % 2) / 2 + Panel1.Width / 16;
+                int y = - Panel1.Height * PanelCounter + Panel1.Height * ((((OperationButton)newButton).Index - 1) / 2) / 6 + Panel1.Height / 25;
+                int width = Convert.ToInt32(Math.Round(Panel1.Width * ((double)1 / 2 - (double)1 / 8)));
+                int heigth = Convert.ToInt32(Math.Round(Panel1.Height * ((double)1 / 6 - (double)2 / 25)));
+                newButton.Location = new Point(x, y);
+                newButton.Size = new Size(width, heigth);
+                newButton.UseVisualStyleBackColor = true;
+        }
+        private void Initialize_OperationPanel()
+        {
+            Panel1.Width += Panel1.Width * Convert.ToInt32((OperationButton.Number-2)/ 12);
+
+        }
+        private static double Add(double a, double b)
         {
             return a + b;
         }
-        public static double Substract(double a, double b)
+        private static double Substract(double a, double b)
         {
             return a - b;
         }
-        public static double Multiply(double a, double b)
+        private static double Multiply(double a, double b)
         {
             return a * b;
         }
-        public static double Divide(double a, double b)
+        private static double Divide(double a, double b)
         {
             return a / b;
         }
-        public void InitializeDefaultOperations()
+        private void InitializeDefaultOperations()
         {
             AddOperation("+", Add);
             AddOperation("-", Substract);
@@ -88,14 +96,43 @@ namespace WindowsFormsApp1
             InitializeUserOperations();
 
         }
-        public static double Sample(double a, double b)
+        private static double Sample(double a, double b)
         {
             return 0;
         }
-        void InitializeUserOperations()
+        private void InitializeUserOperations()
         {
-       //     AddOperation("sample00000", Sample);
-
+            AddOperation("sample00000", Sample); 
+            AddOperation("sample00001", Sample);
+            AddOperation("sample00002", Sample);
+               AddOperation("sample00003", Sample);
+              AddOperation("sample00004", Sample);
+               AddOperation("sample00005", Sample);
+             AddOperation("sample00006", Sample);
+         /*    AddOperation("sample00007", Sample);
+          AddOperation("sample000", Sample); //  (+ РЕСАЙЗ, 4 столбца операций)
+            AddOperation("sample00204", Sample);
+            AddOperation("sample00105", Sample);
+            AddOperation("sample00306", Sample);
+            AddOperation("sample00407", Sample);
+             AddOperation("sample00008", Sample);
+             AddOperation("sample00009", Sample);
+             AddOperation("sample00010", Sample);
+             AddOperation("sample00011", Sample);
+             AddOperation("sample00012", Sample); 
+             AddOperation("sample000011", Sample);
+             AddOperation("sample000022", Sample);
+             AddOperation("sample000013", Sample); //  (+ РЕСАЙЗ, 6 столбцов операций)
+            AddOperation("sample000014", Sample);
+            AddOperation("sample000015", Sample);
+            AddOperation("sample000016", Sample);
+            AddOperation("sample000017", Sample);
+            AddOperation("sample000018", Sample);
+            AddOperation("sample000019", Sample);
+            AddOperation("sample000110", Sample);
+            AddOperation("sample000111", Sample);
+            AddOperation("sample000113", Sample);
+            AddOperation("sample000114", Sample);*/
         }
 
 
