@@ -11,10 +11,10 @@ C:\Users\linok\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsF
 C:\Users\linok\Source\Repos\ketami\TestRub1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
 C:\Users\linok\Source\Repos\ketami\TestRub1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
 C:\Users\linok\Source\Repos\ketami\TestRub1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
-C:\Users\linok\Source\Repos\ketami\TestRub1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
 C:\Users\linok\Source\Repos\ketami\TestRub1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\linok\Source\Repos\ketami\TestRub1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
 C:\Users\linok\Source\Repos\ketami\TestRub1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\linok\Source\Repos\ketami\TestRub1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\linok\Source\Repos\ketami\TestRub1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\linok\source\repos\ketami\TestRub1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.CalculatorWindow.resources
+C:\Users\linok\source\repos\ketami\TestRub1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache

@@ -76,7 +76,6 @@ namespace WindowsFormsApp1
             // 
             // Panel1
             // 
-            this.Panel1.AutoSize = true;
             this.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Panel1.Location = new System.Drawing.Point(289, 12);
             this.Panel1.Name = "Panel1";
@@ -106,7 +105,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.GroupBox1);
             this.Name = "CalculatorWindow";
             this.Text = "Калькулятор";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.CalculatorWindow_Load);
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
             this.ResumeLayout(false);

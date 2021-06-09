@@ -17,34 +17,23 @@ namespace WindowsFormsApp1
         public class OperationButton : Button
         {
            private static Button PushedButton;
-           private string operationName;
-           private static byte number = 1;
-           CalculatorWindow CalculatorWindow;
-           static Dictionary<string, OperationMethod> mappers = new Dictionary<string, OperationMethod>();
+           public string OperationName;
+           public byte Index { get; }
+           public static byte Number = 1;
+                
+           static Dictionary<string, OperationMethod> OperationMap = new Dictionary<string, OperationMethod>();
+            internal OperationButton(string operationName, OperationMethod operationMethod)
+            {
+                this.Name = operationName;
+                this.Text = operationName;
+                this.Index = Number;
+                this.OperationName = operationName;
+                this.UseVisualStyleBackColor = true;
+                ((Button)this).Click += Click;
+                OperationMap.Add(operationName, operationMethod);
+                Number++;
+            }
 
-            internal OperationButton(CalculatorWindow CalculatorWindow, string operationName, OperationMethod operationMethod)
-            {
-                this.CalculatorWindow = CalculatorWindow;
-                this.operationName = operationName;
-                mappers.Add(operationName, operationMethod);
-                Button newButton = new Button();
-                Setter(newButton);
-                newButton.Click += new EventHandler(Click);
-                CalculatorWindow.Panel1.Controls.Add(newButton);
-                number++;
-            }
-            private void Setter(Button newButton)
-            {
-                int x = CalculatorWindow.Panel1.Width * ((number - 1) % 2) / 2 + CalculatorWindow.Panel1.Width / 16;
-                int y = CalculatorWindow.Panel1.Height * ((number - 1) / 2) / 6 + CalculatorWindow.Panel1.Height / 25;
-                int weigth = Convert.ToInt32(Math.Round(CalculatorWindow.Panel1.Width * ((double)1 / 2 - (double)1 / 8)));
-                int heigth = Convert.ToInt32(Math.Round(CalculatorWindow.Panel1.Height * ((double)1 / 6 - (double)2 / 25)));
-                newButton.Name = operationName;
-                newButton.Text = operationName;
-                newButton.Location = new Point(x, y);
-                newButton.Size = new Size(weigth, heigth);
-                newButton.UseVisualStyleBackColor = true;
-            }
             
 
             private new void Click(object sender, EventArgs e)
@@ -52,13 +41,11 @@ namespace WindowsFormsApp1
                 Button btn = sender as Button;
                 if (PushedButton != null)
                 {
-                    PushedButton.FlatStyle = btn.FlatStyle;
                     PushedButton.BackColor = btn.BackColor;
                 }
                 PushedButton = btn;
-                mappers.TryGetValue(operationName, out currentOperationMethod);
-                btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
                 btn.BackColor = System.Drawing.Color.LightSteelBlue;
+                OperationMap.TryGetValue(OperationName, out currentOperationMethod);
             }
 
 
