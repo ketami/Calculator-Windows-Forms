@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
             AddOperation("sample00001", Sample);
             AddOperation("sample00002", Sample);
             AddOperation("sample00003", Sample);
-            AddOperation("sample00004", Sample);
+          /*  AddOperation("sample00004", Sample);
             AddOperation("sample00005", Sample);
             AddOperation("sample00006", Sample);
             AddOperation("sample00007", Sample);
@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
               AddOperation("sample000110", Sample);
               AddOperation("sample000111", Sample);
               AddOperation("sample000113", Sample);
-              AddOperation("sample000114", Sample);
+              AddOperation("sample000114", Sample);*/
         }
         private static double Sample(double a, double b)
         {
