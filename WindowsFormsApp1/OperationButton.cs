@@ -14,7 +14,6 @@ namespace WindowsFormsApp1
     public class OperationButton : Button
     {
         private static Button PushedButton;
-        public string OperationName;
         public byte Index { get; }
         public static byte Number = 1;
 
@@ -24,7 +23,6 @@ namespace WindowsFormsApp1
             this.Name = operationName;
             this.Text = operationName;
             this.Index = Number;
-            this.OperationName = operationName;
             this.UseVisualStyleBackColor = true;
             ((Button)this).Click += Click;
             OperationMap.Add(operationName, operationMethod);
@@ -42,7 +40,7 @@ namespace WindowsFormsApp1
             }
             PushedButton = btn;
             btn.BackColor = System.Drawing.Color.LightSteelBlue;
-            OperationMap.TryGetValue(OperationName, out CalculatorWindow.currentOperationMethod);
+            OperationMap.TryGetValue(this.Text, out CalculatorWindow.currentOperationMethod);
         }
 
 
