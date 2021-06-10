@@ -33,7 +33,6 @@ namespace WindowsFormsApp1
             this.TextBox2 = new System.Windows.Forms.TextBox();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.Label1 = new System.Windows.Forms.Label();
-            this.Panel1 = new System.Windows.Forms.Panel();
             this.ResultButton = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -74,14 +73,6 @@ namespace WindowsFormsApp1
             this.Label1.TabIndex = 5;
             this.Label1.Text = "Ответ:";
             // 
-            // Panel1
-            // 
-            this.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Panel1.Location = new System.Drawing.Point(289, 12);
-            this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(228, 318);
-            this.Panel1.TabIndex = 6;
-            // 
             // ResultButton
             // 
             this.ResultButton.BackColor = System.Drawing.SystemColors.Control;
@@ -100,7 +91,6 @@ namespace WindowsFormsApp1
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(529, 339);
             this.Controls.Add(this.ResultButton);
-            this.Controls.Add(this.Panel1);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.GroupBox1);
             this.Name = "CalculatorWindow";
@@ -118,7 +108,6 @@ namespace WindowsFormsApp1
         internal System.Windows.Forms.TextBox TextBox2;
         private System.Windows.Forms.GroupBox GroupBox1;
         private System.Windows.Forms.Label Label1;
-        private System.Windows.Forms.Panel Panel1;
         private System.Windows.Forms.Button ResultButton;
     }
 }

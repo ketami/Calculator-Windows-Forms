@@ -16,8 +16,8 @@ namespace WindowsFormsApp1
             AddOperation("sample00001", Sample);
             AddOperation("sample00002", Sample);
             AddOperation("sample00003", Sample);
-          /*  AddOperation("sample00004", Sample);
-            AddOperation("sample00005", Sample);
+            AddOperation("sample00004", Sample);
+          /*  AddOperation("sample00005", Sample);
             AddOperation("sample00006", Sample);
             AddOperation("sample00007", Sample);
             AddOperation("sample000", Sample); //  (+ РЕСАЙЗ, 4 столбца операций)
