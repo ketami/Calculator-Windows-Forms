@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class OperationPanel : Panel
+    internal partial class OperationPanel : Panel
     {
     
         private void InitializeUserOperations()
