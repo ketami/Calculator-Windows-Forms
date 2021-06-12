@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1
 {
 
-    public delegate double OperationMethod(double a, double b);
+    internal delegate double OperationMethod(double a, double b);
 
     public partial class CalculatorWindow : Form
     {
@@ -65,20 +65,20 @@ namespace WindowsFormsApp1
         }
 
     }
-    public partial class OperationPanel : Panel
+    internal partial class OperationPanel : Panel
     {
         private static int PanelCounter = -1;
         const int X = 2;
         const int Y = 6;
-        public void AddOperation(string OperationName, OperationMethod operationMethod)
+        internal void AddOperation(string OperationName, OperationMethod operationMethod)
         {
             this.Controls.Add(new OperationButton(OperationName, operationMethod));
 
         }
         private void OperationButton_Setter(Button newButton, byte PanelCounter)
         {
-            int x = Width * PanelCounter + Width * ((((OperationButton)newButton).Index - 1) % 2) / (byte)X + Width / 16;
-            int y = -Height * PanelCounter + Height * ((((OperationButton)newButton).Index - 1) / 2) / (byte)Y + Height / 25;
+            int x = Width * PanelCounter + Width * ((((OperationButton)newButton).Index - 1) % 2) / X + Width / 16;
+            int y = -Height * PanelCounter + Height * ((((OperationButton)newButton).Index - 1) / 2) / Y + Height / 25;
             int width = Convert.ToInt32(Math.Round(Width * ((double)1 / X - (double)1 / 8)));
             int heigth = Convert.ToInt32(Math.Round(Height * ((double)1 / Y - (double)2 / 25)));
             newButton.Location = new Point(x, y);
@@ -99,28 +99,15 @@ namespace WindowsFormsApp1
         }
         private void InitializeDefaultOperations()
         {
+            static double Add(double x, double y) => x + y;
+            static double Substract(double x, double y) => x - y;
+            static double Multiply(double x, double y) => x * y;
+            static double Divide(double x, double y) => x / y;
             AddOperation("+", Add);
             AddOperation("-", Substract);
             AddOperation("*", Multiply);
             AddOperation("/", Divide);
 
-        }
-
-        private static double Add(double a, double b)
-        {
-            return a + b;
-        }
-        private static double Substract(double a, double b)
-        {
-            return a - b;
-        }
-        private static double Multiply(double a, double b)
-        {
-            return a * b;
-        }
-        private static double Divide(double a, double b)
-        {
-            return a / b;
         }
     }
 
